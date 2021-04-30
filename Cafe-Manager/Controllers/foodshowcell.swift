@@ -21,7 +21,7 @@ class foodshowcell: UITableViewCell {
     func setfood(food:fooditem) {
         Name.text = food.Name
         discription.text = food.discription
-        price.text =  "Rs "+String( food.price )
+        price.text =  "Rs. "+String( food.price )
         if food.discount == 0
         {
             discount.text = String( food.discount)
@@ -29,7 +29,7 @@ class foodshowcell: UITableViewCell {
         }
         else
         {
-        discount.text = String( food.discount) + "%Discount"
+        discount.text = String( food.discount) + "% OFF"
             discount.isHidden = false
         }
         

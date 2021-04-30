@@ -10,7 +10,7 @@ class bottomtabBarViewController: UITabBarController {
         let singleTabWidth: CGFloat = self.tabBar.frame.size.width / CGFloat((self.tabBar.items?.count)!)
         let singleTabSize = CGSize(width:singleTabWidth , height: self.tabBar.frame.size.height)
 
-        let selectedTabBackgroundImage: UIImage = self.imageWithColor(color: .yellow, size: singleTabSize)
+        let selectedTabBackgroundImage: UIImage = self.imageWithColor(color: .black, size: singleTabSize)
         self.tabBar.selectionIndicatorImage = selectedTabBackgroundImage
         
         

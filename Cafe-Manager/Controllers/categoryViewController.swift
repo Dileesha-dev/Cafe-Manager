@@ -17,7 +17,6 @@ class categoryViewController: UIViewController {
         super.viewDidLoad()
         tableview.delegate = self
         tableview.dataSource = self
-
        
     }
     
@@ -25,9 +24,9 @@ class categoryViewController: UIViewController {
         
         categorylist.removeAll()
       
-        let docRef = db.collection("category")
+        let catDoc = db.collection("category")
 
-        docRef.getDocuments { (snapshot, error) in
+        catDoc.getDocuments { (snapshot, error) in
             if error != nil
             {
                 print("error")
@@ -38,9 +37,9 @@ class categoryViewController: UIViewController {
                 for document in (snapshot?.documents)!
                 {
 
-                    let dd=document.data()
-                    let name = dd["name"] as! String
-                    let id = dd["id"] as! String
+                    let categoryDoc=document.data()
+                    let name = categoryDoc["name"] as! String
+                    let id = categoryDoc["id"] as! String
 
                     let category = Cafe_Manager.category(id: id, name: name)
 
@@ -71,7 +70,7 @@ class categoryViewController: UIViewController {
         }
         else
         {
-            return "Requeire fields empty"
+            return "Category name required"
         }
         
     }
@@ -92,7 +91,7 @@ class categoryViewController: UIViewController {
             }
             else
             {
-                let alert = UIAlertController(title: "Succesfully", message: "Data Inserted", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Succesfully", message: "Created category!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
                      })
                      alert.addAction(ok)

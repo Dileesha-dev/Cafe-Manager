@@ -25,9 +25,9 @@ class orderViewController: UIViewController {
         orderdtlmain.removeAll()
         globleorder.removeAll()
       
-        let docRef = db.collection("orderonece")
+        let orderDoc = db.collection("orderonece")
 
-        docRef.getDocuments { (snapshot, error) in
+        orderDoc.getDocuments { (snapshot, error) in
             if error != nil
             {
                 print("error")
@@ -38,14 +38,14 @@ class orderViewController: UIViewController {
                 for document in (snapshot?.documents)!
                 {
 
-                    let dd=document.data()
-                    let cusname = dd["cusname"] as! String
-                    let docid = dd["docid"] as! String
-                    let userid = dd["userId"] as! String
-                    let status = dd["status"] as! Int
-                    let section = dd["section"] as! String
-                    let phone = dd["cusphone"] as! String
-                    let orderno = dd["orderNo"] as! String
+                    let rawOrder=document.data()
+                    let cusname = rawOrder["cusname"] as! String
+                    let docid = rawOrder["docid"] as! String
+                    let userid = rawOrder["userId"] as! String
+                    let status = rawOrder["status"] as! Int
+                    let section = rawOrder["section"] as! String
+                    let phone = rawOrder["cusphone"] as! String
+                    let orderno = rawOrder["orderNo"] as! String
                     
 
                     let order = Cafe_Manager.orderdtl(cusname: cusname, docid: docid, userid: userid, status: status,section: section,orderno: orderno,cusphone: phone)
